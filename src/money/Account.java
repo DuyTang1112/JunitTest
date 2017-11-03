@@ -49,7 +49,7 @@ public class Account {
     public void tick() {
         for (TimedPayment tp : timedPayments.values()) {
             tp.tick();
-            tp.tick();
+            //tp.tick();
         }
     }
 

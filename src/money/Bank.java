@@ -46,7 +46,7 @@ public class Bank {
         if (accountList.containsKey(accountId)) {
             throw new AccountExistsException();
         } else {
-            accountList.get(accountId);
+            accountList.put(accountId,new Account(accountId,currency));
         }
     }
 
@@ -58,7 +58,7 @@ public class Bank {
      * @throws AccountDoesNotExistException If the account does not exist
      */
     public void deposit(String accountId, Money money) throws AccountDoesNotExistException {
-        if (accountList.containsKey(accountId)) {
+        if (!accountList.containsKey(accountId)) {
             throw new AccountDoesNotExistException();
         } else {
             Account account = accountList.get(accountId);

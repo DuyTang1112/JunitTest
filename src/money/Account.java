@@ -49,7 +49,7 @@ public class Account {
     public void tick() {
         for (TimedPayment tp : timedPayments.values()) {
             tp.tick();
-            //tp.tick();
+            //tp.tick(); //changed
         }
     }
 
@@ -92,7 +92,7 @@ public class Account {
 
         public TimedPayment(Integer interval, Integer next, Money amount, Account fromAccount, Bank toBank, String toAccount) {
             this.interval = interval;
-            this.next = next;
+            this.next = next-1;//change from =next to =next-1
             this.amount = amount;
             this.fromAccount = fromAccount;
             this.toBank = toBank;
@@ -116,6 +116,7 @@ public class Account {
                      * In reality, this should probably cause a notification somewhere. */
                     fromAccount.deposit(amount);
                 }
+                next--;//added
                 return true;
             } else {
                 next--;

@@ -25,12 +25,13 @@ public class AccountTest {
     @Test
     public void testAddRemoveTimedPayment() {
         testAccount.addTimedPayment("1",2,3,new Money(10000,SEK),SweBank,"Alice");
-        for (int i=0;i<7;i++){
+        for (int i=0;i<5;i++){
             testAccount.tick();
-            //the 4th tick will trigger a transfer, next=interval=2
-            //after 7 ticks, 2 transfers will be completed
+            //the 3th tick will trigger a transfer, next=interval=2
+            //after 5 ticks, 2 transfers will be completed
+            //check the modified Account class
         }
-        assertEquals(10000000- 2*10000,(long)testAccount.getBalance().getAmount());
+        assertEquals(10000000- 2*10000,(long)testAccount.getBalance().getAmount());//failed
         try {
             assertEquals(1000000+2*10000,(long)SweBank.getBalance("Alice"));
         }

@@ -78,7 +78,7 @@ public class Bank {
             throw new AccountDoesNotExistException();
         } else {
             Account account = accountList.get(accountId);
-            account.deposit(money);
+            account.withdraw(money);// changed
         }
     }
 
